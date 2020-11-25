@@ -1,0 +1,104 @@
+/*.oleg {*/
+/*    max-width: 1000px;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    !*justify-content: center;*!*/
+/*}*/
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+li {
+    list-style-type: none;
+    margin-left: 20px;
+    font-size: 28px;
+    line-height: 45px;
+    position: relative;
+    left: -15%;
+}
+
+.a:before {
+    content: '|';
+    position: relative;
+    font-size: 30px;;
+    line-height: 45px;
+    color: dodgerblue;
+}
+
+.first-line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.like {
+    position: relative;
+    right: 3%;;
+    color: rgb(153,153,153);
+    font-size: 50px;
+}
+
+button {
+    margin: 0 0 10px 10px;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border-style: none;
+    background-color: dodgerblue;
+    color: white;
+}
+
+.oleg {
+    margin: 0 auto;
+    max-width: 1200px;
+    min-width: 1024px;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    background-color: lightgray;
+    height: 400px;
+    width: 100%;
+}
+
+.list {
+    width: 25%;
+}
+
+.film {
+    width: 55%;
+}
+
+.image {
+    margin-top: 10px;
+    width: 17%;
+}
+
+.actor {
+    display: inline-block;
+    margin: 10px 10px 10px 0;
+    width: 115px;
+    height: 30px;
+    border-radius: 10px;
+    border-style: none;
+    background-color: dodgerblue;
+    padding-top: 10px;
+    text-align: center;
+    color: white;
+}
+
+.main:after {
+    position: relative;
+    right: 75%;
+    content: '';
+    /*border: 1px solid black;*/
+    width: 2px;
+    background-color: rgb( 231, 231, 234 );
+    height: calc(100% - 50px / 2);
+    margin: 30px;
+}
+
+
