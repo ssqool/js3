@@ -20,6 +20,9 @@ class Film {
   }
 }
 
+const buttonAll = document.querySelector('.all');
+const favorite = document.querySelector('.favorite');
+
 const films = [
   new Film({
   name: 'The Green Mile',
@@ -56,12 +59,32 @@ const films = [
     description: 'WALL-E, short for Waste Allocation Load Lifter Earth-class, is the last robot left on Earth. He spends his days tidying up the planet, one piece of garbage at a time. But during 700 years, WALL-E has developed a personality, and he\'s more than a little lonely.',
     image: 'http://baskino.me/uploads/images/2011/956/sxyj923.jpg',
     favorite: false
+  }),
+  new Film({
+    name: 'Joker',
+    idd: 'joker',
+    premier: '2019',
+    actors: ['Joaquin Phoenix', 'Robert De Niro', 'Zazie Beetz', 'Frances Conroy'],
+    description: 'Joker is a 2019 American psychological thriller film directed and produced by Todd Phillips, who co-wrote the screenplay with Scott Silver. The film, based on DC Comics characters, stars Joaquin Phoenix as the Joker and provides an alternative origin story for the character.',
+    image: 'http://baskino.me/uploads/images/2019/986/utnf344.jpg',
+    favorite: false
+  }),
+  new Film({
+    name: 'Spider-Man',
+    idd: 'spiderMan',
+    premier: '2002',
+    actors: ['Tobey Maguire', 'Willem Dafoe', 'Kirsten Dunst', 'James Franco'],
+    description: 'Spider-Man is a 2002 American superhero film based on the Marvel Comics character of the same name. Directed by Sam Raimi from a screenplay by David Koepp, it is the first installment in the Spider-Man trilogy, and stars Tobey Maguire as the title character, alongside Willem Dafoe, Kirsten Dunst, James Franco, Cliff Robertson, and Rosemary Harris. The film centers on outcast teen genius Peter Parker, who develops spider-like superhuman abilities after being bitten by a genetically-altered spider.',
+    image: 'http://baskino.me/uploads/images/2012/824/eamt856.jpg',
+    favorite: false
   })
 ];
 
 let set = new Set();
 
 function render() {
+  buttonAll.style.background = 'blue';
+  favorite.style.background = 'dodgerblue';
 
   let film1 = document.querySelector('.film');
   let image = document.querySelector('.image');
@@ -72,6 +95,8 @@ function render() {
             <li>${films[1].name}</li>
             <li>${films[2].name}</li>
             <li>${films[3].name}</li>
+            <li>${films[4].name}</li>
+            <li>${films[5].name}</li>
           </ul>
       `
   let list = document.querySelectorAll('li');
@@ -121,10 +146,14 @@ function render() {
 
 render();
 
-const buttonAll = document.querySelector('.all');
-buttonAll.addEventListener('click', render);
 
-  let favorite = document.querySelector('.favorite');
+
+  buttonAll.addEventListener('click', render);
+
+
+
+
+function fav() {
 
   favorite.addEventListener('click', (e) => {
     let arrayFromSet = Array.from(set);
@@ -132,22 +161,31 @@ buttonAll.addEventListener('click', render);
     let image = document.querySelector('.image');
     let allList = document.querySelector('.list');
     let setLength = arrayFromSet.length;
+
+    buttonAll.style.background = 'dodgerblue';
+    favorite.style.background = 'blue';
+
     allList.innerHTML = `
           <ul>
             <li class="a">${setLength > 0 ? arrayFromSet[0].name : ''}</li>
             <li>${setLength > 1 ? arrayFromSet[1].name : ''}</li>
             <li>${setLength > 2 ? arrayFromSet[2].name : ''}</li>
             <li>${setLength > 3 ? arrayFromSet[3].name : ''}</li>
-            
+            <li>${setLength > 4 ? arrayFromSet[4].name : ''}</li>
+            <li>${setLength > 5 ? arrayFromSet[5].name : ''}</li>
           </ul>
       `
+
     let list = document.querySelectorAll('li');
+
     Array.from(list).map(item => {
       item.addEventListener('click', (e) => {
 
         Array.from(list).map(item => item.classList.remove('a'));
+
         let target = e.target;
         let b = films.filter(item => item.name.includes(target.textContent));
+
         film1.innerHTML = `
           <div class="first-line">
             <h2>${b[0].name}</h2>
@@ -161,21 +199,22 @@ buttonAll.addEventListener('click', render);
             <div class="fourth-actor actor">${b[0].actors[3]}</div>
           </div>
           <p>${b[0].description}</p>
-        </div>
-        `;
+          </div>`;
         image.innerHTML = `
-    <div class="image">
-          <img class="film-image" src="${b[0].image}" alt="">
-        </div>
-    `;
+          <div class="image">
+            <img class="film-image" src="${b[0].image}" alt="">
+          </div>`;
 
         target.classList.add('a');
+
         let like = document.querySelector('.like');
+
         like.addEventListener('click', (e) => {
           if (b[0].favorite === true) {
             b[0].removeFromFavorite();
             e.target.style.color = 'grey';
             set.delete(b[0]);
+            return fav();
           } else {
             b[0].addToFavorite();
             set.add(b[0]);
@@ -185,6 +224,8 @@ buttonAll.addEventListener('click', render);
       });
     });
   });
+}
+fav();
 
 
 
