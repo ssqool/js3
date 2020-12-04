@@ -1,0 +1,127 @@
+body {
+    padding: 0;
+    margin: 0;
+    color: white;
+    background-color: dimgrey;
+}
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    padding-top: 50px;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 500px;
+    height: 900px;
+    background-color: #47463e;
+    border: 1px solid;
+    border-radius: 20px;
+}
+
+h2 {
+    font-size: 50px;
+}
+
+.header{
+    border-radius: 20px 20px 0 0;
+    background-color: darkred;
+    padding-left: 20px;
+}
+
+/*wrapper for message-boxes*/
+
+.chat-message{
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: #47463e;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.dialog-user {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0 20px 20px;
+
+}
+
+.dialog-jarvis {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 0 20px 20px;
+}
+
+/*message-boxes*/
+
+.message-jarvis {
+    position: relative;
+    display: flex;
+    margin: 0 0 20px 20px;
+    padding: 20px;
+    background-color: white;
+    color: black;
+    font-size: 35px;
+    flex-wrap: wrap;
+    max-width: 78%;
+}
+
+.message-jarvis::after {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 30%;
+    border: 10px solid transparent;
+    border-right: 10px solid white;
+}
+
+.message-user {
+    position: relative;
+    display: flex;
+
+    font-size: 30px;
+    margin: 0 20px 0 20px;
+    padding: 20px;
+    background-color: darkred;
+    color: white;
+}
+
+.message-user::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 30%;
+    border: 10px solid transparent;
+    border-left: 10px solid darkred;
+}
+
+
+/*bottom line with button and input*/
+
+.chat-input{
+    width: 100%;
+    display: flex;
+}
+
+input{
+    height: 60px;
+    border: 1px solid white;
+    border-radius: 0 0 0 19px;
+    outline: none;
+    font-size: 30px;
+    width: 85%;
+}
+
+#input-button {
+    font-size: 50px;
+    text-align: center;
+    width: 15%;
+    height: 100%;
+    background-color: lightgrey;
+    border-radius: 0 0 19px 0;
+}
