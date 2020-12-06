@@ -1,102 +1,60 @@
-/* ----------------------------------------------------------------------- */
-/*                                                                         */
-/*   Lazy loading. sprint04. t08                                           */
-/*                                                                         */
-/*   By: Oleksiy Nechaiev <nechaeff@gmail.com>                             */
-/*                        <t.me/losini>                                    */
-/*   Created: 2020/10/13 10:21 (24H)                                       */
-/*   Finished: 2020/10/13 15:24 (24H)                                      */
-/*                                                                         */
-/*   ucode IT academy <ucode.world>                                        */
-/*   Je sues 42, nous sommes 42                                            */
-/*                                                                         */
-/*   Topics: Lazy loading content                                          */
-/*                                                                         */
-/* ----------------------------------------------------------------------- */
 'use strict'
 
-/*====== Function ======*/
-/* get element by selector, returns the element
- * @id - css-style string for querySelector */
-let get = (id) => document.querySelector(id);
-/* Get all elements by selector, returns the array of elements
- * @id - css-style string for querySelector */
-let getAll = (id) => document.querySelectorAll(id);
 
-let countSpan = get('#counter')
-let imgBlock = get('#imgBlock')
-let counter = 0
-let images = [
-  './assets/images/1.jpg',
-  './assets/images/2.jpg',
-  './assets/images/3.jpg',
-  './assets/images/4.jpg',
-  './assets/images/5.jpg',
-  './assets/images/6.jpg',
-  './assets/images/7.jpg',
-  './assets/images/8.jpg',
-  './assets/images/9.jpg',
-  './assets/images/10.jpg',
-  './assets/images/11.jpg',
-  './assets/images/12.jpg',
-  './assets/images/13.jpg',
-  './assets/images/14.jpg',
-  './assets/images/15.jpg',
-  './assets/images/16.jpg',
-  './assets/images/17.jpg',
-  './assets/images/18.jpg',
-  './assets/images/19.jpg',
-  './assets/images/20.jpg',
-]
+//looking for a attribute
+const images = document.querySelectorAll('[data-src]')
 
-let renderImg = () => {
-  images.map((img) => {
-    imgBlock.insertAdjacentHTML('beforeend',
-      `<img class="image lazy" src="./assets/images/temp.gif" \
-data-src="${img}" alt="${img}">`)
-  })
-}
 
-let addCounter = () => {
-  counter += 1
-  countSpan.innerHTML = counter
-  if (counter === 20) {
-    let div = get('.counter')
-    div.style.background = 'green'
-    setTimeout(() => {
-      div.style.display = 'none'
-    }, 3000)
+//Обработчик события
+function preloadImage(img) {
+  const src = img.getAttribute('data-src');
+  if(!src) {
+    return;
+  } else {
+    img.src = src;
   }
 }
+let loadingCounter = document.querySelector('.loading-counter');
+console.log(loadingCounter+1);
+let counter = 0;
 
-let lookForVisible = () => {
-  let imgAll = getAll('.lazy')
-
-  /* check if there is an Observer in browser */
-  if ('IntersectionObserver' in window) {
-    let imgObserver = new IntersectionObserver((entries, observer) => {
-      entries.map((entry) => {
-        /* check if image is in viewport */
-        if (entry.isIntersecting) {
-          let lazyImg = entry.target
-          /* change src attr form placeholder to real src
-           * .dataset.(smth) = data-(smth) attr */
-          lazyImg.src = lazyImg.dataset.src
-          lazyImg.style.height = 400 + 'px'
-          lazyImg.style.width = 600 + 'px'
-          /* remove class lazy */
-          lazyImg.classList.remove('lazy')
-          /* and remove element from observer list */
-          imgObserver.unobserve(lazyImg)
-          addCounter();
-        }
-      })
-    })
-    /* append observer to each node from NodeList */
-    imgAll.forEach((lazyImage) => imgObserver.observe(lazyImage))
-  }
+//root - тот элемента омносительно которого отслеживаем(не юзабельный в данном случае)
+//rootMargin - если хотим учесть отступыж
+//threshold - порог срабатывания(когда объект(изображения) пересикает зону видимости)
+const imgOption = {
+  root: null,
+  threshold: 0.5,
+  rootMargin: '0px 0px -300px 0px'
 }
 
-renderImg()
-lookForVisible()
+//создаем экземпляр объекта (который позволяет отслеживать и выполнять какие-то действия по мере попадения объекта в область видимости)
+// 1параметр - функция которая реагирует
+// 2параметр - option
+const imgObserver = new IntersectionObserver((entries, imgOption) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      return;
+    } else {
+      preloadImage(entry.target);
+      console.log(entry.intersectionRatio);
+      // на сколько зашла картинка на экран
+      if (entry.intersectionRatio > 0.5) {
+        counter++;
+        loadingCounter.innerHTML = counter;
+      }
+      imgObserver.unobserve(entry.target)
+    }
+  });
+}, imgOption);
+
+
+//следим за элементами image
+images.forEach(image => {
+  // setTimeout(()=> {
+  //   imgObserver.observe(image);
+  // }, 2000)
+  //observe - следит зашла ли картинка в область видимости
+  imgObserver.observe(image);
+});
+
 

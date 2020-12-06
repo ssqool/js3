@@ -1,39 +1,26 @@
-<!-- ----------------------------------------------------------------------- -->
-<!--                                                                         -->
-<!--   Lazy loading. sprint04. t08                                           -->
-<!--                                                                         -->
-<!--   By: Oleksiy Nechaiev <nechaeff@gmail.com>                             -->
-<!--                        <t.me/losini>                                    -->
-<!--   Created: 2020/10/13 10:21 (24H)                                       -->
-<!--   Finished: 2020/10/13 15:24 (24H)                                      -->
-<!--                                                                         -->
-<!--   ucode IT academy <ucode.world>                                        -->
-<!--   Je sues 42, nous sommes 42                                            -->
-<!--                                                                         -->
-<!--   Topics: Lazy loading content                                          -->
-<!--                                                                         -->
-<!-- ----------------------------------------------------------------------- -->
 <!DOCTYPE html>
-<html lang=en>
-
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
   <title>Lazy loading</title>
-  <meta charset="utf-8">
   <meta name="description" content="t08. Lazy loading">
-  <meta name="author" content="Oleksiy Nechayev">
-  <meta name="keywords" content="front-end, frontend, html,
-java script, javascript js, c, css, html5, css3">
-  <meta name="viewport" content="width=device-width, initial-scale-1">
-  <link rel="stylesheet" href="./css/style.css">
-  <script src="js/script.js" defer></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap">
 </head>
-
 <body>
-<div class="counter">
-  <p><span id="counter">0</span> images loaded from 20</p>
-</div>
-<div id="imgBlock">
+<h1>Lazy loading</h1>
+<span class="wrap">Uploaded img: <span class="loading-counter">2</span></span>
 
-</div>
+<img data-src="https://static7.depositphotos.com/1314241/789/i/950/depositphotos_7890698-stock-photo-ferocious-lion.jpg" alt="lion">
+<img data-src="https://st.depositphotos.com/1017908/1548/i/950/depositphotos_15489579-stock-photo-amazing-mountain-with-red-leaf.jpg" alt="lakes">
+<img data-src="https://static3.depositphotos.com/1002772/152/i/950/depositphotos_1522183-stock-photo-london-big-ben-clock-tower.jpg" alt="london">
+<img data-src="https://static4.depositphotos.com/1029126/388/i/950/depositphotos_3885755-stock-photo-broken-glass.jpg" alt="glass">
+<img data-src="https://static3.depositphotos.com/1001122/125/i/950/depositphotos_1257997-stock-photo-mountain-stream.jpg" alt="river">
+<img data-src="https://static4.depositphotos.com/1000992/513/i/950/depositphotos_5138551-stock-photo-compass-rope-glasses-and-old.jpg" alt="table">
+<img data-src="https://st2.depositphotos.com/1447017/9181/i/950/depositphotos_91817524-stock-photo-sailboat-against-a-background-of.jpg" alt="sea">
+<img data-src="https://static6.depositphotos.com/1007593/648/i/950/depositphotos_6482500-stock-photo-alps-in-winter.jpg" alt="mountain">
+
+<script src="js/script.js"></script>
 </body>
 </html>
