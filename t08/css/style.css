@@ -1,0 +1,30 @@
+/* ----------------------------------------------------------------------- */
+/*                                                                         */
+/*   Lazy loading. sprint04. t08                                           */
+/*                                                                         */
+/*   By: Oleksiy Nechaiev <nechaeff@gmail.com>                             */
+/*                        <t.me/losini>                                    */
+/*   Created: 2020/10/13 10:21 (24H)                                       */
+/*   Finished: 2020/10/13 15:24 (24H)                                      */
+/*                                                                         */
+/*   ucode IT academy <ucode.world>                                        */
+/*   Je sues 42, nous sommes 42                                            */
+/*                                                                         */
+/*   Topics: Lazy loading content                                          */
+/*                                                                         */
+/* ----------------------------------------------------------------------- */
+
+.counter {
+  position: fixed;
+  right: 2em;
+  color: white;
+  font-weight: 500;
+  background: darkred;
+  padding: .5em;
+  border-radius: 1em;
+}
+
+.image {
+  display: block;
+  margin: 1em auto;
+}
