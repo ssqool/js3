@@ -1,0 +1,43 @@
+body {
+    background-color: darkgray;
+}
+
+h1, .align {
+    text-align: center;
+}
+
+
+.weather {
+    height: 50vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    margin: 5px;
+}
+
+.date {
+    background-color: dodgerblue;
+    color: white;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.card:hover {
+    box-shadow: 0 0 10px 0px black;
+}
+
+
+.degree {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 2.5em;
+    margin: 0px;
+}
