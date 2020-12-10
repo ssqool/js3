@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <title>Super-stats</title>
+  <meta name="description" content="t10. Super-stats">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+<h1>Super-stats</h1>
+
+<p>Compare stats of different superheroes.</p>
+<p>Find superheroes to compare using search, or click 'Random' to select a random superhero.</p>
+<p>Once you have selected all the heroes you want to compare, click 'Compare'.</p>
+
+<div class="search-add-zone">
+  <input type="search" id="superhero-search" placeholder="search for a superhero">
+
+  <button id="button-search">Search</button>
+  <button id="button-random">Random</button>
+  <button id="button-compare">Compare<span id="compare-counter">0</span></button>
+</div>
+
+<div class="search-result">
+  <h2>Searching result</h2>
+  <p>(click to add comparison)</p>
+  <div class="searching-card">
+
+  </div>
+</div>
+
+<div id="columnchart_material"></div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
