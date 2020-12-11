@@ -1,0 +1,24 @@
+body { margin: 0; padding: 0; background-color: #666666;}
+h1 {padding-left: 2%;}
+#map {
+    position: absolute;
+    top: 5%;
+    left: 2%;
+    width: 50%;
+    height: 50%;
+    border-radius: 20px;
+    box-shadow: 0 0 10px white;
+}
+
+.coordinates {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    position: absolute;
+    left: 2%;
+    bottom: 50%;
+    padding: 5px 10px;
+    margin: 0;
+    font-size: 11px;
+    line-height: 18px;
+    border-radius: 3px;;
+}
